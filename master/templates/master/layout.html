@@ -23,6 +23,7 @@
                 <a href="{% url 'service-index-url' %}" class="nav-item nav-link">Услуги</a>
                 <a href="{% url 'about-url' %}" class="nav-item nav-link">О нас</a>
                 <a href="{% url 'contacts-url' %}" class="nav-item nav-link">Контакты</a>
+                <a href="{% url 'create-order-url' %}" class="nav-item nav-link">Создать заказ</a>
             </div>
             <div class="navbar-nav ml-auto">
                 {% if request.user.is_authenticated %}

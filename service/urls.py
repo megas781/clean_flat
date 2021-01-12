@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+
 urlpatterns = [
     path('', views.index, name='service-index-url'),
+    path('create-order', views.CreateOrderView.as_view(), name='create-order-url')
 ]
