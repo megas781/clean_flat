@@ -2,6 +2,16 @@
 
 {% block content %}
 
-    <h1>Наши услуги</h1>
+    <div class="row">
+
+    {% for service in services %}
+        <div class="col-xs-4">
+			<h2>HTML</h2>
+			<p>HTML is a markup language that is used for creating web pages. The HTML tutorial section will help you understand the basics of HTML, so that you can create your own web pages or website.</p>
+			<p><a href="" target="_blank" class="btn btn-success">Learn More &raquo;</a></p>
+		</div>
+    {% endfor %}
+
+	</div>
 
 {% endblock %}
