@@ -10,7 +10,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 # нужно для создания пользователя (при реги страции)
 from django.contrib.auth.forms import User
 from .forms import CustomAuthUserForm, CustomRegisterUserForm
-
+from django.contrib.auth import authenticate, login
 
 #Мутим страницу авторизации через классы
 class CustomLoginView (LoginView):
@@ -31,3 +31,13 @@ class CustomRegisterView(CreateView):
     form_class = CustomRegisterUserForm
     success_url = '/'
     success_msg = 'Регистрация прошла успешно'
+    def form_valid(self, form):
+        form_valid = super().form_valid(form=form)
+        username = form.cleaned_data["username"]
+        password = form.cleaned_data["password"]
+        auth_user = authenticate(username=username, password=password)
+        login(self.request, auth_user)
+        return form_valid
+
+class CustomLogoutView(LogoutView):
+    next_page = '/login'

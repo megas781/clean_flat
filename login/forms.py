@@ -23,6 +23,7 @@ class CustomAuthUserForm(AuthenticationForm):
 
 
 class CustomRegisterUserForm(forms.ModelForm):
+    #шифровение паролей, чтобы пользователь работал
     def save(self, commit=True):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password"])

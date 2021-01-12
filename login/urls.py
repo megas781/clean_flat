@@ -25,5 +25,6 @@ urlpatterns = [
 
     path('', CustomLoginView.as_view(), name='login-url'),
 
-    path('register', views.CustomRegisterView.as_view(), name='register-url')
+    path('register', views.CustomRegisterView.as_view(), name='register-url'),
+    path('logout', views.CustomLogoutView.as_view(), name='logout-url')
 ]
