@@ -16,7 +16,11 @@ from .forms import CustomAuthUserForm, CustomRegisterUserForm
 class CustomLoginView (LoginView):
     template_name = 'login/login.html'
     form_class = CustomAuthUserForm
-    success_url = reverse_lazy('')
+    success_url = '/'
+
+# нужно для переадресации после входа
+    def get_success_url(self):
+        return self.success_url
     # template_name = 'login/register.html'
     # form_class = CustomRegisterUserForm
     # success_url = reverse_lazy('edit-page')
