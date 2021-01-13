@@ -24,6 +24,9 @@ class Order(models.Model):
      # если нужно сделать поле необязательным, то пропиши дополнительно:
     # blank = True, null = True
 
+    # def all_price(self):
+    #     return self.ser
+
     def __str__(self):
         return f'{self.user} {self.order_date} - {self.service_type}'
 

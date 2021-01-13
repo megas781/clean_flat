@@ -26,7 +26,7 @@
 
                 {% if request.user.is_authenticated and not request.user.is_staff %}
 
-                    <a href="#" class="nav-item nav-link">Мои заказы</a>
+                    <a href="{% url 'my-orders' %}" class="nav-item nav-link">Мои заказы</a>
                     <a href="{% url 'create-order-url' %}" class="nav-item nav-link">Создать заказ</a>
 
                 {% elif request.user.is_authenticated and request.user.is_staff and not request.user.is_superuser %}

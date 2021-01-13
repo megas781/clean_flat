@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Service
-from django.views.generic import CreateView
+from .models import Service, Order
+from django.views.generic import CreateView, ListView
 from .forms import CreateOrderForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
@@ -24,3 +24,14 @@ class CreateOrderView(CreateView, LoginRequiredMixin):
         self.object.user = self.request.user
         self.object.save()
         return super().form_valid(form)
+
+class MyOrdersListView(ListView):
+    model = Order
+    template_name = 'service/my-orders.html'
+    def get_context_data(self, *, object_list=None, **kwargs):
+        orders = Order.objects.all()
+        return {
+            'orders': orders
+        }
+
+

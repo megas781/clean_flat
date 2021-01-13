@@ -1,0 +1,34 @@
+{% extends 'master/layout.html' %}
+
+{% block content %}
+
+    <h1>Мои заказы</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Код заказа</th>
+            <th>Дата уборкм</th>
+            <th>Вид уборки</th>
+            <th>Кол-во комнат</th>
+            <th>Кол-во санузлов</th>
+            <th>Общая стоимость</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for order in orders %}
+            <tr>
+                <td>000{{ order.id }}</td>
+                <td>{{ order.order_date }}</td>
+                <td>{{ order.service_type }}</td>
+                <td>{{ order.room_count }}</td>
+                <td>{{ order.bathroom_count }}</td>
+{#                <td>{{  }}</td>#}
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}
