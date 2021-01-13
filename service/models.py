@@ -13,7 +13,8 @@ class Service(models.Model):
         return self.title + ' (' + f'{self.id}' + ')'
 
 class Order(models.Model):
-    service_type = models.CharField(max_length=60, verbose_name='тип услуги', choices=[('supporting', 'Поддерживающая уборка'), ('full', 'Генеральная уборка'), ('after_renovation', 'Уборка после ремонта')], null=False, default='supporting')
+    # service_type = models.CharField(max_length=60, verbose_name='тип услуги', choices=[('supporting', 'Поддерживающая уборка'), ('full', 'Генеральная уборка'), ('after_renovation', 'Уборка после ремонта')], null=False, default='supporting')
+    service_type = models.ForeignKey(Service, on_delete=models.CASCADE, verbose_name='Тип уборки')
     room_count = models.IntegerField('кол-во комнат', default=1)
     bathroom_count = models.IntegerField(verbose_name='кол-во санузлов', default=1)
     address = models.CharField(max_length= 200, verbose_name='Адрес')
@@ -24,8 +25,16 @@ class Order(models.Model):
      # если нужно сделать поле необязательным, то пропиши дополнительно:
     # blank = True, null = True
 
-    # def all_price(self):
-    #     return self.ser
+    def all_price(self):
+
+        price = self.service_type.initial_price
+
+        if self.room_count > 1:
+            price += self.service_type.add_room_price * self.room_count
+        if self.bathroom_count > 1:
+            price += self.service_type.add_bathroom_price * self.bathroom_count
+
+        return price
 
     def __str__(self):
         return f'{self.user} {self.order_date} - {self.service_type}'

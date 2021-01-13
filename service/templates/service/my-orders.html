@@ -10,9 +10,11 @@
             <th>Код заказа</th>
             <th>Дата уборкм</th>
             <th>Вид уборки</th>
+            <th>Начальная стоимость</th>
             <th>Кол-во комнат</th>
             <th>Кол-во санузлов</th>
             <th>Общая стоимость</th>
+            <th>Действия</th>
         </tr>
         </thead>
         <tbody>
@@ -22,9 +24,11 @@
                 <td>000{{ order.id }}</td>
                 <td>{{ order.order_date }}</td>
                 <td>{{ order.service_type }}</td>
-                <td>{{ order.room_count }}</td>
-                <td>{{ order.bathroom_count }}</td>
-{#                <td>{{  }}</td>#}
+                <td>{{ order.service_type.initial_price }}</td>
+                <td>{{ order.room_count }} * {{ order.service_type.add_room_price }} руб</td>
+                <td>{{ order.bathroom_count }} * {{ order.service_type.add_bathroom_price }} руб</td>
+                <td>{{ order.all_price }} руб</td>
+                <td><a class="btn btn-success" style="white-space: nowrap" href="#">Оставить отзыв</a></td>
             </tr>
         {% endfor %}
 

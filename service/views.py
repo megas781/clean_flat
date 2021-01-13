@@ -18,7 +18,7 @@ def index(request):
 class CreateOrderView(CreateView, LoginRequiredMixin):
     template_name = 'service/create-order.html'
     form_class = CreateOrderForm
-    success_url = '/'
+    success_url = '/my-orders/'
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
@@ -29,7 +29,7 @@ class MyOrdersListView(ListView):
     model = Order
     template_name = 'service/my-orders.html'
     def get_context_data(self, *, object_list=None, **kwargs):
-        orders = Order.objects.all()
+        orders = Order.objects.order_by('-order_date')
         return {
             'orders': orders
         }

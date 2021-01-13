@@ -11,7 +11,7 @@ class CreateOrderForm(forms.ModelForm):
         model = Order
 
         # my_date_field = forms.DateField(widget=DateInput(format='%d-%m-%Y',attrs={'class': 'form-control'}))
-        service_type = ChoiceField(choices=('supporting', 'full', 'after_renovation'), required=True),
+        # service_type = ChoiceField(choices=('supporting', 'full', 'after_renovation'), required=True),
 
         fields = ['service_type','room_count', 'bathroom_count', 'address', 'order_date']
         widgets = {
