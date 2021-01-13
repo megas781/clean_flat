@@ -28,7 +28,7 @@
                 <td>{{ order.room_count }} * {{ order.service_type.add_room_price }} руб</td>
                 <td>{{ order.bathroom_count }} * {{ order.service_type.add_bathroom_price }} руб</td>
                 <td>{{ order.all_price }} руб</td>
-                <td><a class="btn btn-success" style="white-space: nowrap" href="#">Оставить отзыв</a></td>
+                <td><a class="btn btn-success" style="white-space: nowrap" href="{% url 'send-review-url' order.id %}">Подробнее</a></td>
             </tr>
         {% endfor %}
 
