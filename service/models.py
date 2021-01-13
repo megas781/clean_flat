@@ -13,13 +13,16 @@ class Service(models.Model):
         return self.title + ' (' + f'{self.id}' + ')'
 
 class Order(models.Model):
-    service_type = models.CharField(max_length=60)
-    room_count = models.IntegerField()
-    bathroom_count = models.IntegerField()
-    address = models.CharField(max_length= 200, verbose_name='')
+    service_type = models.CharField(max_length=60, verbose_name='тип услуги', choices=[('supporting', 'Поддерживающая уборка'), ('full', 'Генеральная уборка'), ('after_renovation', 'Уборка после ремонта')], null=False, default='supporting')
+    room_count = models.IntegerField('кол-во комнат', default=1)
+    bathroom_count = models.IntegerField(verbose_name='кол-во санузлов', default=1)
+    address = models.CharField(max_length= 200, verbose_name='Адрес')
     order_date = models.DateField(verbose_name='Дата заказа')
-    date_created = models.DateField(verbose_name='Дата создания заказа')
+    date_created = models.DateField(verbose_name='Дата создания заказа', auto_now=True)
 
-    user = models.ForeignKey(User, on_delete= models.CASCADE,verbose_name= 'Клиент')
-    # если нужно сделать поле необязательным, то пропиши дополнительно:
+    user = models.ForeignKey(User, on_delete= models.CASCADE,verbose_name= 'Клиент', )
+     # если нужно сделать поле необязательным, то пропиши дополнительно:
     # blank = True, null = True
+
+    def __str__(self):
+        return f'{self.user} {self.order_date} - {self.service_type}'
