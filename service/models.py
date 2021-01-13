@@ -26,3 +26,11 @@ class Order(models.Model):
 
     def __str__(self):
         return f'{self.user} {self.order_date} - {self.service_type}'
+
+class Review(models.Model):
+    client = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Клиент', null=False, )
+    order = models.ForeignKey(Order, verbose_name='Заказ, на который оставлают отзыв', null=False, on_delete=models.CASCADE)
+    date_created = models.DateField(auto_now=True, verbose_name='дата создания отзыва', null=False)
+    text = models.TextField()
+    scores = models.IntegerField(choices=[(1, '1 звезда'),(2, '2 звезды'),(3, '3 звезды'),(4, '3 звезды'),(5, '5 звезд')], verbose_name='оценка', null=False)
+
