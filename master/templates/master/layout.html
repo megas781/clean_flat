@@ -26,8 +26,19 @@
 
                 {% if request.user.is_authenticated and not request.user.is_staff %}
 
-                    <a href="{% url 'create-order-url' %}" class="nav-item nav-link">Создать заказ</a>
                     <a href="#" class="nav-item nav-link">Мои заказы</a>
+                    <a href="{% url 'create-order-url' %}" class="nav-item nav-link">Создать заказ</a>
+
+                {% elif request.user.is_authenticated and request.user.is_staff and not request.user.is_superuser %}
+{#                    Ссылки для работников #}
+                    <a href="#" class="nav-item nav-link">Список работы</a>
+
+                {% elif request.user.is_authenticated and request.user.is_superuser %}
+
+                    <a href="/admin" class="nav-item nav-link">Админ-панель</a>
+
+                {% else %}
+{#                    Для анонимуса #}
 
                 {% endif %}
 
