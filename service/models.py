@@ -10,7 +10,7 @@ class Service(models.Model):
     date_created = models.DateField(auto_created=True)
 
     def __str__(self):
-        return self.title + ' (' + f'{self.id}' + ')'
+        return self.title
 
 class Order(models.Model):
     # service_type = models.CharField(max_length=60, verbose_name='тип услуги', choices=[('supporting', 'Поддерживающая уборка'), ('full', 'Генеральная уборка'), ('after_renovation', 'Уборка после ремонта')], null=False, default='supporting')
@@ -37,12 +37,14 @@ class Order(models.Model):
         return price
 
     def __str__(self):
-        return f'{self.user} {self.order_date} - {self.service_type}'
+        return f'Заказ №000{self.id} {self.order_date} - {self.service_type}'
 
 class Review(models.Model):
     client = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Клиент', null=False, )
-    order = models.ForeignKey(Order, verbose_name='Заказ, на который оставлают отзыв', null=False, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, verbose_name='Заказ, на который оставлают отзыв', null=False, on_delete=models.CASCADE, related_name='reviews_orders')
     date_created = models.DateField(auto_now=True, verbose_name='дата создания отзыва', null=False)
     text = models.TextField()
-    scores = models.IntegerField(choices=[(1, '1 звезда'),(2, '2 звезды'),(3, '3 звезды'),(4, '3 звезды'),(5, '5 звезд')], verbose_name='оценка', null=False)
+    scores = models.IntegerField(choices=[(1, '1 звезда'),(2, '2 звезды'),(3, '3 звезды'),(4, '4 звезды'),(5, '5 звезд')], verbose_name='оценка', null=False)
 
+    def __str__(self):
+        return f'Отзыв клиента {self.client} на заказ {self.order} ({self.date_created})'

@@ -19,5 +19,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='service-index-url'),
+    path('order/<int:pk>', views.OrderDetailView.as_view(), name='send-review-url'),
     path('create-order', views.CreateOrderView.as_view(), name='create-order-url')
 ]

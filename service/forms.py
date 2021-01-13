@@ -1,5 +1,5 @@
 from django import forms
-from .models import Order
+from .models import Order, Review
 from django.forms import DateInput, ChoiceField
 
 class DateInput(forms.DateInput):
@@ -19,3 +19,8 @@ class CreateOrderForm(forms.ModelForm):
                 'class': 'form-control'
             })
         }
+
+class SendReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['text', 'scores']
