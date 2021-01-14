@@ -20,6 +20,7 @@ from service.views import MyOrdersListView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('master.urls')),
+    path('api/', include('api.urls')),
     path('login/', include('login.urls')),
     path('service/', include('service.urls')),
     path('my-orders/', MyOrdersListView.as_view(), name='my-orders')
