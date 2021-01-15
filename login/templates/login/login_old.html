@@ -69,13 +69,16 @@
                                             <div class="screen-reader-response"></div>
                                             <form class="quform" method="post" enctype="multipart/form-data">
 
+                                                {% csrf_token %}
+
                                                 <span>Еще не с нами? <a href="{% url 'register-url' %}">Зарегистрируйтесь!</a></span>
 
                                                 <div class="quform-elements">
                                                     <div class="quform-element">
                                                         <p>
                                                             <span class="wpcf7-form-control-wrap your-name">
-                                                                <input id="name" type="text" name="name" size="40" class="input1" aria-required="true" aria-invalid="false" placeholder="Логин*">
+{#                                                                <input id="name" type="text" name="name" size="40" class="input1" aria-required="true" aria-invalid="false" placeholder="Логин*">#}
+                                                                {{ form.username }}
                                                             </span>
                                                         </p>
                                                     </div>
@@ -83,7 +86,8 @@
                                                         <p>
 
                                                             <span class="wpcf7-form-control-wrap your-email">
-                                                                <input id="email" type="text" name="email" size="40" class="input1" aria-required="true" aria-invalid="false" placeholder="Пароль*">
+{#                                                                <input id="password" type="password" name="email" size="40" class="input1" aria-required="true" aria-invalid="false" placeholder="Пароль*">#}
+                                                                {{ form.password }}
                                                             </span>
                                                         </p>
                                                     </div>
