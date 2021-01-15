@@ -50,16 +50,17 @@
           type="text/css" media="all"/>
     <link rel="stylesheet"
           href="{% static 'master/js/plugins/js_composer/assets/css/lib/typicons/src/font/typicons.min.css' %}"
-          type="text/css" media="all"/>`
+          type="text/css" media="all"/>
+    `
     <link rel="stylesheet"
           href="{% static 'master/js/plugins/js_composer/assets/css/lib/vc-entypo/vc_entypo.min.css' %}" type="text/css"
           media="all"/>
     <link rel="stylesheet"
           href="{% static 'master/js/plugins/js_composer/assets/css/lib/vc-linecons/vc_linecons_icons.min.css' %}"
           type="text/css" media="all"/>
-{#    <link rel="stylesheet"#}
-{#          href="{% static 'master/js/plugins/js_composer/assets/css/lib/monosocialiconsfont/monosocialiconsfont.min.css' %}"#}
-{#          type="text/css" media="all"/>#}
+    {#    <link rel="stylesheet"#}
+    {#          href="{% static 'master/js/plugins/js_composer/assets/css/lib/monosocialiconsfont/monosocialiconsfont.min.css' %}"#}
+    {#          type="text/css" media="all"/>#}
     <link rel="stylesheet"
           href="{% static 'master/js/plugins/js_composer/assets/css/lib/vc-material/vc_material.min.css' %}"
           type="text/css"
@@ -75,14 +76,14 @@
     <link rel="stylesheet" href="{% static 'master/css/slick-theme.css' %}" type="text/css" media="all"/>
 
 
-{#    <link rel="preconnect" href="https://fonts.gstatic.com">#}
-{#<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap" rel="stylesheet">#}
+    {#    <link rel="preconnect" href="https://fonts.gstatic.com">#}
+    {#<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap" rel="stylesheet">#}
 
-{#    <link rel="stylesheet"#}
-{#          href="http://fonts.googleapis.com/css?family=Nunito%3A400%2C700%26subset%3Dlatin%7CPoppins%3A300%2C300italic%2C400%2C400italic%2C600%2C600italic%26subset%3Dlatin%7CPoppins%3A300%2C400%2C600%26subset%3Dlatin&amp;ver=1.0"#}
-{#          type="text/css" media="all"/>#}
-{#    <link href="https://fonts.googleapis.com/css?family=Nunito:400%2C300%2C200%2C500%7CPoppins:300%7COpen+Sans:300"#}
-{#          rel="stylesheet" property="stylesheet" type="text/css" media="all"/>#}
+    {#    <link rel="stylesheet"#}
+    {#          href="http://fonts.googleapis.com/css?family=Nunito%3A400%2C700%26subset%3Dlatin%7CPoppins%3A300%2C300italic%2C400%2C400italic%2C600%2C600italic%26subset%3Dlatin%7CPoppins%3A300%2C400%2C600%26subset%3Dlatin&amp;ver=1.0"#}
+    {#          type="text/css" media="all"/>#}
+    {#    <link href="https://fonts.googleapis.com/css?family=Nunito:400%2C300%2C200%2C500%7CPoppins:300%7COpen+Sans:300"#}
+    {#          rel="stylesheet" property="stylesheet" type="text/css" media="all"/>#}
 
 </head>
 
@@ -122,7 +123,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="header-left">
-                    <a class="logo-link logo-text" href="index.html">Clean Flat</a>
+                    <a class="logo-link logo-text" href="{% url 'master-index-url' %}">Clean Flat</a>
                     <div class="mobile-sidebar-trigger">
                         <div class="st-sidebar-trigger-effects">
                             <a class="float-sidebar-toggle-btn" data-effect="st-sidebar-effect-2"><i
@@ -146,7 +147,7 @@
                                         <a href="#"><span>Главная</span></a>
                                     </li>
                                     <li class="menu-item menu-item-has-children">
-                                        <a href="#"><span>Услуги</span></a>
+                                        <a href="{% url 'service-index-url' %}"><span>Услуги</span></a>
                                         <ul class="sub-menu megamenu-column-1 level-0">
                                             <li class="menu-item">
                                                 <a href="#">Поддерживающая уборка</a>
@@ -164,26 +165,44 @@
                                         </ul>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="#"><span>О нас</span></a>
+                                        <a href="{% url 'about-url' %}"><span>О нас</span></a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="#"><span>Контакты</span></a>
-                                    </li>
-                                    <li class="menu-item menu-item-has-children  current-menu-item current_page_item">
-                                        <a href="#"><span>Заказы</span></a>
-                                        <ul class="sub-menu megamenu-column-1 level-0">
-                                            <li class="menu-item">
-                                                <a href="#">Мои заказы</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="#">Сделать заказ<sup data-style="background: red"> + </sup></a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="#">Как это происходит<sup data-style="background: gray"> ? </sup></a>
-                                            </li>
-                                        </ul>
+                                        <a href="{% url 'contacts-url' %}"><span>Контакты</span></a>
                                     </li>
 
+                                    {% if request.user.is_authenticated and not request.user.is_staff %}
+                                        <li class="menu-item menu-item-has-children">
+                                            <a href="#"><span>Заказы</span></a>
+                                            <ul class="sub-menu megamenu-column-1 level-0">
+                                                <li class="menu-item">
+                                                    <a href="{% url 'my-orders' %}">Мои заказы</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="{% url 'create-order-url' %}">Сделать заказ<sup
+                                                            data-style="background: red"> + </sup></a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="{% url 'about-url' %}">Как это происходит<sup
+                                                            data-style="background: gray">
+                                                        ? </sup></a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    {% elif request.user.is_authenticated and request.user.is_staff and not request.user.is_superuser %}
+                                        {#                                    работники#}
+                                        <li class="menu-item">
+                                            <a href="#"><span>Заказы</span></a>
+                                        </li>
+                                    {% elif request.user.is_authenticated and request.user.is_superuser %}
+                                        {#                                    админ#}
+                                        <li class="menu-item">
+                                            <a href="/admin"><span>Админ-панель</span></a>
+                                        </li>
+                                    {% else %}
+                                        {#                    Для анонимуса #}
+
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>
@@ -197,11 +216,42 @@
                                 <a class="search-toggle-btn"><i class="fa fa-search"></i></a>
                             </div>
                         </li>
-                        <li>
-                            <div>
-                                <a href="#"><i class="fa fa-sign-in"></i></a>
-                            </div>
-                        </li>
+                        {% if request.user.is_authenticated %}
+                            <li>
+                                <div>
+                                    <div class="nav-item nav-link" style="color: white">{{ request.user }}
+
+                                    {% if request.user.is_authenticated and not request.user.is_staff %}
+
+                                    {% elif request.user.is_authenticated and request.user.is_staff and not request.user.is_superuser %}
+                                        {# работники #}
+                                        <sup>Работник</sup>
+                                    {% elif request.user.is_authenticated and request.user.is_superuser %}
+                                        {# админ #}
+                                        <sup>Админ</sup>
+                                    {% else %}
+
+                                    {% endif %}
+
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <a href="{% url 'logout-url' %}"><i class="fa fa-sign-out"></i></a>
+                                </div>
+                            </li>
+                        {% else %}
+                            {#                    <a href="{% url 'register-url' %}" class="nav-item nav-link">Регистрация</a>#}
+                            <li>
+                                <div>
+                                    <a href="{% url 'login-url' %}"><i class="fa fa-sign-in"></i></a>
+                                </div>
+                            </li>
+                        {% endif %}
+                        {#                                <a href="#"><i class="fa fa-sign-in"></i></a>#}
+
                     </ul>
                 </div>
             </div>
@@ -222,12 +272,14 @@
                 <ul id="footer-sidebar" class="clearfix">
                     <li id="text-2" class="widget widget_text">
                         <div class="textwidget">
-{#                            <img src="upload/logo-barrel2.png" width="200" height="300" alt="Logo"/>#}
+                            {#                            <img src="upload/logo-barrel2.png" width="200" height="300" alt="Logo"/>#}
 
-                            <p>Нельзя быть экспертами во всем, но мы стараемся. Наши клиннеры наведут порядок во всей квартире, в том числе в ванной и на кухне. И еще мы одежду аккуратно складываем, расставляем обувь, меняем постельное бельё и застилаем кровать.</a></p>
+                            <p>Нельзя быть экспертами во всем, но мы стараемся. Наши клиннеры наведут порядок во всей
+                                квартире, в том числе в ванной и на кухне. И еще мы одежду аккуратно складываем,
+                                расставляем обувь, меняем постельное бельё и застилаем кровать.</a></p>
                         </div>
                     </li>
-{#
+                    {#
                     <li id="nav_menu-2" class="widget widget_nav_menu">
                         <h2 class="widgettitle">Ссылки разработчика</h2>
                         <div class="menu-footermenu-simple-container">
@@ -253,11 +305,12 @@
                                     <ul>
                                         <li>
                                             <a href="https://vk.com/megas781" target="_blank" class="a-vk"><i
-                                        class="fa fa-vk"></i></a>
+                                                    class="fa fa-vk"></i></a>
                                         </li>
                                         <li>
-                                            <a href="https://instagram.com/megas781" target="_blank" class="a-instagram"><i
-                                        class="fa fa-instagram"></i></a>
+                                            <a href="https://instagram.com/megas781" target="_blank"
+                                               class="a-instagram"><i
+                                                    class="fa fa-instagram"></i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -272,7 +325,7 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6 footer-copyright">Сайт создал студент ИТ факультета Московского Политеха <a
-                                    href="https://vk.com/megas781">Калачев Глеб</a></div>
+                            href="https://vk.com/megas781">Калачев Глеб</a></div>
                     <div class="col-md-3"></div>
                 </div>
             </div>
