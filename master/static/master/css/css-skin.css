@@ -33,7 +33,7 @@ header.fixed:not(.top-menu-position-header) .logo-link > img {
     }
 } /**  * Custom CSS  **/ /** * Theme Google Font  **/
 header .logo-link.logo-text {
-    font-family: "Poppins";
+    /*font-family: "Poppins";*/
 }
 h1,
 h2,
@@ -41,7 +41,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Nunito";
+    /*font-family: "Nunito";*/
 }
 a.btn,
 .btn,
@@ -59,7 +59,7 @@ input[type="submit"],
 .woocommerce-page input.button,
 .woocommerce a.added_to_cart,
 .woocommerce-page a.added_to_cart {
-    font-family: "Poppins";
+    /*font-family: "Poppins";*/
 }
 .header-info-text .header-info-half .header-info-content-title,
 .mgt-header-block p,
@@ -83,10 +83,10 @@ input[type="submit"],
 .woocommerce ul.products li.product .onsale,
 .woocommerce span.onsale,
 .sidebar .widget.widget_barrel_recent_entries li .widget-post-details-wrapper {
-    font-family: "Nunito";
+    /*font-family: "Nunito";*/
 }
 body {
-    font-family: "Poppins";
+    /*font-family: "Poppins";*/
     font-size: 14px;
 } /**  * Colors and color skins  */
 body {
