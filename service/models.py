@@ -50,5 +50,22 @@ class Review(models.Model):
         return f'Отзыв клиента {self.client} на заказ {self.order} ({self.date_created})'
 
 class Discount(models.Model):
-    title: models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    date_end = models.DateField()
+    def __str__(self):
+        return self.title
+
+class Report(models.Model):
+    client = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Клиент')
+    text = models.TextField(verbose_name='Текст жалобы')
+    date_created = models.DateField(auto_now=True)
+    def __str__(self):
+        return '(' + self.client.username + ') ' + self.text
+
+class Faq(models.Model):
+    question = models.CharField(max_length=200)
+    answer = models.TextField()
+    def __str__(self):
+        return self.question
     
