@@ -17,7 +17,7 @@ def index(request):
     return render(request, 'service/index.html', context)
 
 
-class CreateOrderView(DetailView, LoginRequiredMixin):
+class CreateOrderView(CreateView, LoginRequiredMixin):
     template_name = 'service/create-order.html'
     form_class = CreateOrderForm
     success_url = '/my-orders/'

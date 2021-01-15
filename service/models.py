@@ -48,3 +48,7 @@ class Review(models.Model):
 
     def __str__(self):
         return f'Отзыв клиента {self.client} на заказ {self.order} ({self.date_created})'
+
+class Discount(models.Model):
+    title: models.CharField(max_length=100)
+    
