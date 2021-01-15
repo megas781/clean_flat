@@ -14,7 +14,7 @@ def index(request):
         'services': services
     }
 
-    return render(request, 'service/index.html', context)
+    return render(request, 'service/services.html', context)
 
 
 class CreateOrderView(CreateView, LoginRequiredMixin):
