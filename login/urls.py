@@ -21,7 +21,7 @@ from .views import CustomLoginView
 
 urlpatterns = [
 
-    # path('', LoginView.as_view(template_name='login/login.html'), name='login-url'),
+    # path('', LoginView.as_view(template_name='login/login_old.html'), name='login-url'),
 
     path('', CustomLoginView.as_view(), name='login-url'),
 

@@ -14,7 +14,7 @@ from django.contrib.auth import authenticate, login
 
 #Мутим страницу авторизации через классы
 class CustomLoginView (LoginView):
-    template_name = 'login/login.html'
+    template_name = 'login/login_old.html'
     form_class = CustomAuthUserForm
     success_url = '/'
 
