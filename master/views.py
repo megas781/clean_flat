@@ -18,3 +18,6 @@ def contacts_func(req):
 
 def about_us_func(req):
     return render(req, 'master/about_us.html')
+
+def faq_func(req):
+    return render(req, 'master/faq.html')
