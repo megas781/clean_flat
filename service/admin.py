@@ -12,11 +12,20 @@ class ReviewAdmin(admin.ModelAdmin):
     list_display = ('client', 'order', 'date_created', 'text', 'scores', 'is_viewed',)
     actions = [make_reviews_as_viewed]
 
+class OrderInline(admin.TabularInline):
+    model = Order
+    extra = 1
+
+class ReportInline(admin.TabularInline):
+    model = Report
+    extra = 1
+
 class ReviewInline(admin.TabularInline):
     model = Review
+    extra = 1
 
 class UserAdmin(admin.ModelAdmin):
-   inlines = [Order, Review, Report]
+   inlines = [OrderInline, ReportInline, ReviewInline]
 
 admin.site.register(Service)
 admin.site.register(Order)
