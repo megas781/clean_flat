@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'login',
     'master',
     'api',
+    'import_export',
     'rest_framework'
 ]
 
