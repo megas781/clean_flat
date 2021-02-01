@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7a2f2f08-d8dd-40d1-be45-cf3931dc0c33" name="std-699.ist.mospolytech.ru" url="http://clean-flat.std-699.ist.mospolytech.ru">
+        <fileTransfer rootFolder="/home/std" accessType="SFTP" host="std-699.ist.mospolytech.ru" port="22" sshConfigId="2d85d5bb-7dc9-47ad-b1ae-3271a017b61e" sshConfig="std@std-699.ist.mospolytech.ru:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
