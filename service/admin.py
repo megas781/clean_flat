@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import Service, Order, Review, Discount, Faq, Report
-from django.contrib.auth.models import User
 
 # Register your models here.
 def make_reviews_as_viewed(modeladmin, request, queryset):
@@ -27,9 +26,6 @@ class ReviewInline(admin.TabularInline):
 
 class UserAdmin(admin.ModelAdmin):
    inlines = [OrderInline, ReportInline, ReviewInline]
-
-admin.site.unregister(User)
-admin.site.register(User, UserAdmin)
 
 admin.site.register(Service)
 admin.site.register(Order)
