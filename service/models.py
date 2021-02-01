@@ -45,6 +45,7 @@ class Review(models.Model):
     date_created = models.DateField(auto_now=True, verbose_name='дата создания отзыва', null=False)
     text = models.TextField()
     scores = models.IntegerField(choices=[(1, '1 звезда'),(2, '2 звезды'),(3, '3 звезды'),(4, '4 звезды'),(5, '5 звезд')], verbose_name='оценка', null=False)
+    is_viewed = models.BooleanField(verbose_name='Отзыв просмотрен', default=False)
 
     def __str__(self):
         return f'Отзыв клиента {self.client} на заказ {self.order} ({self.date_created})'
@@ -60,6 +61,7 @@ class Report(models.Model):
     client = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Клиент')
     text = models.TextField(verbose_name='Текст жалобы')
     date_created = models.DateField(auto_now=True)
+
     def __str__(self):
         return '(' + self.client.username + ') ' + self.text
 

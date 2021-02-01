@@ -55,15 +55,18 @@
                         <hr>
 
                         {% if order.reviews_orders.count %}
-                            <h3>Ваш отзыв</h3>
-                            <div style="margin-left: 32px">
-                                <div>
-                                    <p>{{ request.user }}:</p>
-                                    <p><i>{{ order.reviews_orders.first.text }}</i></p>
-                                    <div style="font-weight: bold; color: green">Звезд
-                                        - {{ order.reviews_orders.first.scores }}</div>
+                            {% with review=order.reviews_orders.first %}
+                                <h3>Ваш отзыв</h3>
+                                <div style="margin-left: 32px">
+                                    <div>
+                                        <p>{{ request.user }}:</p>
+                                        <p><i>{{ review.text }}</i></p>
+                                        <div style="font-weight: bold; color: green">Звезд
+                                            - {{ review.scores }}</div>
+                                        <div style="font-weight: bold; color: orange">Отзыв {{ review.is_viewed|yesno:"просмотрен,еще не просмотрен" }} модератором</div>
+                                    </div>
                                 </div>
-                            </div>
+                            {% endwith %}
                         {% else %}
                             <h3>Оставьте отзыв</h3>
                             <form method="post">
