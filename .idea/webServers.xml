@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="e6c0f2c2-9539-4165-94f4-fa3b4757a627" name="fit_prod">
+        <fileTransfer rootFolder="/home/std" accessType="SFTP" host="std-699.ist.mospolytech.ru" port="22" sshConfigId="2d85d5bb-7dc9-47ad-b1ae-3271a017b61e" sshConfig="std@std-699.ist.mospolytech.ru:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

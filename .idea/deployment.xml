@@ -2,10 +2,17 @@
 <project version="4">
   <component name="PublishConfigData" serverName="std-699.ist.mospolytech.ru" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="std-699.ist.mospolytech.ru">
+      <paths name="fit_prod">
         <serverdata>
           <mappings>
             <mapping deploy="/clean_flat" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="std-699.ist.mospolytech.ru">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/clean_flat_alter" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
