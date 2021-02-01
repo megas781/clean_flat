@@ -34,7 +34,7 @@ python manage.py runserver
 
 Администратор
 login: glebkalachev
-password: Rqwe123
+password: Rqwe123 or 123123
 Пользователь:
 login: katepros
 password: 123123
